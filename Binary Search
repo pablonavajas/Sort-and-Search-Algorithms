@@ -1,0 +1,53 @@
+#Template for Binary Tree Search - Searching Algorithm
+
+#Name: Pablo Navajas Helguero
+
+=================================================================
+
+#include<iostream>
+
+using namespace std;
+
+int BinSearch(int nums[10], int digit, int low, int max){
+
+  if (low > max){
+
+    return -1;
+
+  }
+
+  else {
+
+    int mid = (low + max)/2;
+
+    if (nums[mid] > digit){
+
+      BinSearch(nums, digit, low, mid-1);
+
+    }
+
+    else if (nums[mid] < digit){
+
+      BinSearch(nums, digit, mid+1, max);
+
+    }
+
+    else {
+
+      return mid;
+
+    }
+  }
+}
+
+int main() {
+
+  int List[10] = {1,5,7,11,16,24,25,32,40,50};
+
+  int digit = 11;
+
+  cout << BinSearch(List,digit,0,10)<< "\n";
+
+  return 0;
+
+}
