@@ -102,7 +102,7 @@ void printList(int arr[], int len){
 
 int main(){
 
-  int List[] = {4,6,1,5,2,6,0,9,8,7};
+  int List[10] = {4,6,1,5,2,6,0,9,8,7};
 
   int Listlen = sizeof(List)/sizeof(List[0]);
 
