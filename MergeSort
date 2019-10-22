@@ -1,0 +1,124 @@
+#Template for MergeSort - Sorting Algorithm
+
+#Name: Pablo Navajas Helguero
+
+=================================================================
+
+#include<iostream>
+
+using namespace std;
+
+void merge(int nums[10], int left, int right, int midpoint){
+
+  int i, j, k;
+
+  int len1= midpoint - left + 1;
+  int len2= right - midpoint;
+
+  int L[len1], R[len2];
+
+
+  for (i = 0; i < len1; i++){
+
+    L[i] = nums[left+i];
+  }
+
+  for (j = 0; j < len2; j++){
+    R[j] = nums[midpoint + 1 + j];
+
+  }
+
+  i = 0;
+  j = 0;
+  k = left;
+
+  while ((i < len1) && (j < len2)){
+
+    if (L[i] <= R[j]){
+      
+      nums[k] = L[i];
+
+      i++;
+
+    }
+
+    else {
+
+      nums[k] = R[j];
+
+      j++;
+
+    }
+
+    k++;
+
+  }
+
+  while (i < len1){
+
+    nums[k] = L[i];
+
+    i++;
+    k++;
+  }
+
+  while (j < len2){
+
+    nums[k] = R[j];
+
+    j++;
+    k++;
+
+  }
+
+}
+
+
+void mergesort(int nums[], int left, int right){
+
+  if (left < right){
+
+    int midpoint = (right + left)/2;
+
+    mergesort(nums, left, midpoint);
+
+    mergesort(nums, midpoint+1, right);
+
+    merge(nums, left, right, midpoint);
+
+  }
+
+}
+
+void printList(int arr[], int len){
+
+  int i;
+
+  for (i = 0; i < len; i++){
+
+    cout << arr[i] << "\n";
+  }
+}
+
+int main(){
+
+  int List[] = {4,6,1,5,2,6,0,9,8,7};
+
+  int Listlen = sizeof(List)/sizeof(List[0]);
+
+  printList(List, Listlen);
+
+  cout << sizeof(List) << "   " << sizeof(List[0]) << " = " << Listlen  << "\n";
+
+  mergesort(List, 0, Listlen);
+
+  printList(List, Listlen);
+
+  return 0;
+
+}
+
+
+
+      
+      
