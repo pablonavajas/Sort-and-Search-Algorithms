@@ -1,0 +1,82 @@
+#Template for QuickSort - Sorting Algorithm
+
+#Name: Pablo Navajas Helguero
+
+=================================================================
+
+include<iostream>
+
+using namespace std;
+
+void swap(int nums[], int left, int right){
+
+  int temp = nums[left];
+  nums[left] = nums[right];
+  nums[right] = temp;
+
+}
+
+int partition( int nums[], int left, int right){
+
+  int pivot = (left + right)/2;
+
+  while (left <= right){
+
+    while (nums[left] < nums[pivot]){
+      left++;
+    }
+
+    while (nums[right] > nums[pivot]) {
+      right--;
+    }
+
+    if (left <= right){
+
+      swap(nums, left, right);
+      left++;
+      right--;
+    }
+    return left;
+  }
+}
+
+
+void QuickSort(int nums[], int left, int right){
+
+  int index = partition(nums, left, right);
+
+  if (left < index -1){
+
+    QuickSort(nums, left, index-1);
+  }
+  if (right > index){
+
+    QuickSort(nums, index+1, right);
+  }
+}
+
+void printlist(int arr[], int len){
+
+  int i;
+
+  for (i = 0; i < len; i++){
+
+    cout << arr[i] << "\n";
+  }
+}
+
+int main(){
+
+  int List[10] = {23,4,12,76,44,19,58,32,9,100};
+
+  int len = sizeof(List)/sizeof(List[0]);
+
+  printlist(List,len);
+
+  QuickSort(List,0,len);
+
+  printlist(List,len);
+
+  return 0;
+
+}
